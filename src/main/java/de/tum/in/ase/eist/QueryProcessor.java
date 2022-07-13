@@ -14,7 +14,15 @@ public class QueryProcessor {
         } else if (query.toLowerCase().contains("what is your name")) {
            return "TestPlayer";
         } else if (query.toLowerCase().contains("which of the following numbers is the largest")) {
-            return "20381";
+            String[] numbers = query.substring(query.indexOf(':') + 1).split(",");
+            int max = Integer.MIN_VALUE;
+            for (int i = 0; i<numbers.length; i++) {
+                int cur = Integer.parseInt(numbers[i]);
+                if (max < cur) {
+                    max = cur;
+                }
+            }
+            return "" + max;
         } else if (query.toLowerCase().contains("what is 12 plus 19")) {
             return "31";
         } else {
